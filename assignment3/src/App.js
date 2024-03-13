@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Scatterplot from "./Scatterplot";
 import Datapoint from "./Datapoint";
 import * as d3 from "d3";
+import csv_example from "./graphs/random_points.csv";
 import csv_0 from "./graphs/random_points_color_0.csv";
 import csv_1 from "./graphs/random_points_color_1.csv";
 import csv_2 from "./graphs/random_points_color_2.csv";
@@ -28,6 +29,7 @@ var timeEnd
 
 function App() {
   const csvFiles = [
+    csv_example,
     csv_0,
     csv_1,
     csv_2,
@@ -63,6 +65,7 @@ function App() {
   });
 
   function navGraph(){
+    console.log(csvNumber)
     document.getElementById("graph").style.display = "block";
     document.getElementById("intro").style.display = "none";
     document.getElementById("experiment2").style.display = "none";
@@ -71,23 +74,27 @@ function App() {
     timeStart = performance.now()
     let timeStartTemp = timeStart
     setTimeout(()=>{if(timeStart === timeStartTemp) navBreak()}, 30000);  // 30 secs
-
   }
 
   function navBreak(){
+    console.log(csvNumber)
     timeEnd = performance.now()
-    //TODO: need to add 1 to all of these after adding sample
-    if(csvNumber === 4){
+    if(csvNumber === 0){
+      document.getElementById("break").style.display = "none";
+      document.getElementById("breakAfterSample").style.display = "block";
+      document.getElementById("graph").style.display = "none";
+    }
+    else if(csvNumber === 5){
       document.getElementById("graph").style.display = "none";
       document.getElementById("experiment2").style.display = "block";
     }
-    else if(csvNumber === 5){
+    else if(csvNumber === 6){
       document.getElementById("breakAfterSample").style.display = "block";
       document.getElementById("graph").style.display = "none";
       document.getElementById("experiment2").style.display = "none";
       document.getElementById("break").style.display = "none";
     }
-    else if(csvNumber === 10){ //TODO: have to change this to 11
+    else if(csvNumber === 11){
       document.getElementById("graph").style.display = "none";
       document.getElementById("end").style.display = "block";
       document.getElementById("experiment2").style.display = "none";
@@ -117,9 +124,10 @@ function App() {
   return (
     <div className="App">
       <div id="intro" className="text-center intro">
-        <h3 className="mx-auto p-2">In this experiment, you are asked to find and click this red circle as fast as you can in a scatterplot. There will be 7 scatterplots in the experiment. We will also start with a sample scatterplot for you to practice and familiarize yourself with. We won't record any other information from you except the time it takes to find and click the red circle. Your time cutoff for each trial will be 30 seconds.</h3>
-        <h3 className="mx-auto p-2">Click the "agree" button to begin.</h3>
-        <button className="btn btn-primary position-absolute bottom-0 translate-middle-x mb-1" onClick={navGraph}>Agree</button> 
+      <h2>Experiment 1</h2>
+        <h3 className="mx-auto p-2">In this experiment, you are asked to find and click a <b>red circle</b> as fast as you can in a scatterplot. There will be 5 scatterplots in the experiment. We will also start with a sample scatterplot for you to practice and familiarize yourself with. We won't record any other information from you except the time it takes to find and click the red circle. Your time cutoff for each trial will be 30 seconds.</h3>
+        <h3 className="mx-auto p-2">Click the "next" button to begin.</h3>
+        <button className="btn btn-primary position-absolute bottom-0 translate-middle-x mb-1" onClick={navGraph}>Next</button> 
       </div>
       
       <svg id="graph" width="700" height="700">
@@ -130,7 +138,7 @@ function App() {
           height={dimensions.height}
           data={data}
           callback={navBreak}
-          callbackColor={csvNumber < 5 ? '#ff0000' : '#080808'}
+          callbackColor={csvNumber < 6 ? '#ff0000' : '#080808'}
         />
       </svg>
 
@@ -148,7 +156,8 @@ function App() {
 
       <div id= "experiment2">
         <h2>Experiment 2</h2>
-        <h3 className="mx-auto p-2">In this experiment, you are asked to find and click the black circle as fast as you can in a scatterplot. There will be 5 scatterplots in the experiment. We won't record any other information from you except the time it takes to find and click the black circle. Your time cutoff for each trial will be 30 seconds. </h3>
+        <h3 className="mx-auto p-2">In this experiment, you are asked to find and click the <b>black circle</b> as fast as you can in a scatterplot. There will be 5 scatterplots in the experiment. We won't record any other information from you except the time it takes to find and click the black circle. Your time cutoff for each trial will be 30 seconds. </h3>
+        <h3 className="mx-auto p-2">Click the "next" button to begin.</h3>
         <button className="btn btn-primary position-absolute bottom-0 translate-middle-x mb-1" onClick={navGraph}>Next</button> 
       </div>
 
@@ -157,23 +166,6 @@ function App() {
       </div>
 
     </div>
-
-    // <div className="App">
-    //   <div style={{display: 'flex', alignItems: 'center'}}>
-    //     <div id="container" style={{width: '300px', height: '300px'}}>
-    //         {canGo 
-    //         && <img key={imageNo} style={{cursor: 'pointer'}} src={imageList[imageNo]} alt={`${imageNo}`} onClick={mouseClicked} />}
-    //     </div>
-    //     {canGo 
-    //     && <div style={{"margin": "50px", width: '125px', 'fontSize': '25px'}}>
-    //       Click the red circle to continue.
-    //     </div> }
-    //     {!canGo 
-    //     // && <h1>Click continue when you're ready for the next graph.</h1>
-    //     && <Button variant="primary"  style={{marginLeft: 'auto', marginRight: 'auto', marginTop:'auto', marginBottom:'auto'}} onClick={()=>setCanGo(true)}>Continue</Button> 
-    //     }
-    //   </div>
-    // </div>
   );
 }
 
