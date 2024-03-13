@@ -139,7 +139,7 @@ function App() {
         <button className="btn btn-primary position-absolute bottom-0 translate-middle-x mb-1" onClick={navGraph}>Next</button> 
       </div>
 
-      <div id="break">
+      <div id="break" class="container">
         <h3 className="mx-auto p-2">Click "next" when you're ready for the next graph.</h3>
         <button className="btn btn-primary position-absolute bottom-0 translate-middle-x mb-1" onClick={navGraph}>
           Next
@@ -149,7 +149,7 @@ function App() {
       <div id= "experiment2">
         <h2>Experiment 2</h2>
         <h3 className="mx-auto p-2">In this experiment, you are asked to find and click the black circle as fast as you can in a scatterplot. There will be 5 scatterplots in the experiment. We won't record any other information from you except the time it takes to find and click the black circle. Your time cutoff for each trial will be 30 seconds. </h3>
-        <button className="btn btn-primary" onClick={navGraph}>Next</button> 
+        <button className="btn btn-primary position-absolute bottom-0 translate-middle-x mb-1" onClick={navGraph}>Next</button> 
       </div>
 
       <div id="end">
