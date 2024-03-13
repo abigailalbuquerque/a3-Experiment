@@ -45,6 +45,12 @@
   margin: 0;
 }
 
+/*button{
+  position: absolute;
+  margin-left:auto;
+  margin-right:auto;
+  top: 70%;
+}*/
 #graph{
   display: none;
 }

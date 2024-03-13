@@ -15,6 +15,7 @@ import csv_1 from "./graphs/random_points_color_1.csv";
 import csv_2 from "./graphs/random_points_color_2.csv";
 import csv_3 from "./graphs/random_points_color_3.csv";
 import csv_4 from "./graphs/random_points_color_4.csv";
+import csv_2_example from "./graphs/experiment2_example.csv"
 import csv_2_0 from "./graphs/experiment2_random_points_saturated.csv"
 import csv_2_1 from "./graphs/experiment2_random_points_second_farthest.csv"
 import csv_2_2 from "./graphs/experiment2_random_points_light.csv"
@@ -32,6 +33,7 @@ function App() {
     csv_2,
     csv_3,
     csv_4,
+    csv_2_example,
     csv_2_0,
     csv_2_1,
     csv_2_2,
@@ -72,21 +74,31 @@ function App() {
     document.getElementById("intro").style.display = "none";
     document.getElementById("experiment2").style.display = "none";
     document.getElementById("break").style.display = "none";
+    document.getElementById("breakAfterSample").style.display = "none";
     timeStart = performance.now()
   }
 
   function navBreak(event){
     timeEnd = performance.now()
+    //TODO: need to add 1 to all of these after adding sample
     if(csvNumber === 4){
       document.getElementById("graph").style.display = "none";
       document.getElementById("experiment2").style.display = "block";
     }
-    else if(csvNumber === 9){
+    else if(csvNumber === 5){
+      document.getElementById("breakAfterSample").style.display = "block";
+      document.getElementById("graph").style.display = "none";
+      document.getElementById("experiment2").style.display = "none";
+      document.getElementById("break").style.display = "none";
+    }
+    else if(csvNumber === 10){ //TODO: have to change this to 11
       document.getElementById("graph").style.display = "none";
       document.getElementById("end").style.display = "block";
       document.getElementById("experiment2").style.display = "none";
+      document.getElementById("breakAfterSample").style.display = "none";
     }
     else{
+      document.getElementById("breakAfterSample").style.display = "none";
       document.getElementById("graph").style.display = "none";
       document.getElementById("break").style.display = "block";
       document.getElementById("experiment2").style.display = "none";
@@ -98,6 +110,7 @@ function App() {
   useEffect(() => {
     if(csvNumber === 0){
       document.getElementById("break").style.display = "none";
+      document.getElementById("breakAfterSample").style.display = "none";
       document.getElementById("graph").style.display = "none";
       document.getElementById("experiment2").style.display = "none";
       document.getElementById("end").style.display = "none";
@@ -110,7 +123,7 @@ function App() {
       <div id="intro" className="text-center intro">
         <h3 className="mx-auto p-2">In this experiment, you are asked to find and click this red circle as fast as you can in a scatterplot. There will be 7 scatterplots in the experiment. We will also start with a sample scatterplot for you to practice and familiarize yourself with. We won't record any other information from you except the time it takes to find and click the red circle.</h3>
         <h3 className="mx-auto p-2">Click the "agree" button to begin.</h3>
-        <button className="btn btn-primary" onClick={navGraph}>Agree</button> 
+        <button className="btn btn-primary position-absolute bottom-0 translate-middle-x mb-1" onClick={navGraph}>Agree</button> 
       </div>
       
       <svg id="graph" width="700" height="700" onClick={navBreak}>
@@ -123,15 +136,22 @@ function App() {
         />
       </svg>
 
+      <div id="breakAfterSample">
+        <h3 className="mx-auto p-2">Sample trial finished. Click "next" when you're ready to proceed with the experiment.</h3>
+        <button className="btn btn-primary position-absolute bottom-0 translate-middle-x mb-1" onClick={navGraph}>Next</button> 
+      </div>
+
       <div id="break">
         <h3 className="mx-auto p-2">Click "next" when you're ready for the next graph.</h3>
-        <button className="btn btn-primary" onClick={navGraph}>Next</button> 
+        <button className="btn btn-primary position-absolute bottom-0 translate-middle-x mb-1" onClick={navGraph}>
+          Next
+        </button> 
       </div>
 
       <div id= "experiment2">
         <h2>Experiment 2</h2>
         <h3 className="mx-auto p-2">In this experiment, you are asked to find and click the black circle as fast as you can in a scatterplot. There will be 5 scatterplots in the experiment. We won't record any other information from you except the time it takes to find and click the black circle.</h3>
-        <button className="btn btn-primary" onClick={navGraph}>Next</button> 
+        <button className="btn btn-primary position-absolute bottom-0 translate-middle-x mb-1" onClick={navGraph}>Next</button> 
       </div>
 
       <div id="end">
