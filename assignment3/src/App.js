@@ -27,6 +27,8 @@ import csv_2_4 from "./graphs/experiment2_random_points_dark.csv"
 var timeStart
 var timeEnd
 
+const timers = []
+
 function App() {
   const csvFiles = [
     csv_example,
@@ -76,6 +78,17 @@ function App() {
     setTimeout(()=>{if(timeStart === timeStartTemp) navBreak()}, 30000);  // 30 secs
   }
 
+  
+  function buildEnd(){
+    let str = '<ul style="list-style:none">'
+    for(let i = 0; i<timers.length; i++){
+      str += '<li> Trial '+i+": "+timers[i]/1000+"s<li>"
+    }
+    str += '<ul>'
+    document.getElementById("timerContainer").innerHTML = str;
+  }
+
+
   function navBreak(){
     console.log(csvNumber)
     timeEnd = performance.now()
@@ -96,6 +109,7 @@ function App() {
     }
     else if(csvNumber === 11){
       document.getElementById("graph").style.display = "none";
+      buildEnd();
       document.getElementById("end").style.display = "block";
       document.getElementById("experiment2").style.display = "none";
       document.getElementById("breakAfterSample").style.display = "none";
@@ -106,7 +120,7 @@ function App() {
       document.getElementById("break").style.display = "block";
       document.getElementById("experiment2").style.display = "none";
     }
-    console.log(timeEnd-timeStart) //Prints time to click
+    timers.push(timeEnd-timeStart) //Prints time to click
     setcsvNumber(n => n+1)
   }
 
@@ -163,6 +177,9 @@ function App() {
 
       <div id="end">
         <h3 className="mx-auto p-2">This is the end of the experiment. Thank you for participating!</h3>
+        <h3 className="mx-auto p-2">Here are your results:</h3>
+        <div id="timerContainer"></div>
+      
       </div>
 
     </div>
