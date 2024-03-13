@@ -1,31 +1,35 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9bb3cb0bd63c918f449cefe7f49aab97",
+    "revision": "766ea333e3ed7b81c4e8e8d455d5a0af",
     "url": "/a3-Experiment/index.html"
   },
   {
-    "revision": "eb2a7175227609345b6c",
+    "revision": "84358e07003c558e70ba",
     "url": "/a3-Experiment/static/css/2.98036eff.chunk.css"
   },
   {
-    "revision": "1b203d3cea3e00b47ceb",
-    "url": "/a3-Experiment/static/css/main.8e12ed35.chunk.css"
+    "revision": "983b43b596f5875a855d",
+    "url": "/a3-Experiment/static/css/main.b2756b77.chunk.css"
   },
   {
-    "revision": "eb2a7175227609345b6c",
-    "url": "/a3-Experiment/static/js/2.47e8abec.chunk.js"
+    "revision": "84358e07003c558e70ba",
+    "url": "/a3-Experiment/static/js/2.0a78bc18.chunk.js"
   },
   {
-    "revision": "9d0cc3cfc905af4a6940",
-    "url": "/a3-Experiment/static/js/3.69ba5426.chunk.js"
+    "revision": "db4976e2c3fc371be79e",
+    "url": "/a3-Experiment/static/js/3.1af95c37.chunk.js"
   },
   {
-    "revision": "1b203d3cea3e00b47ceb",
-    "url": "/a3-Experiment/static/js/main.d6e12cfb.chunk.js"
+    "revision": "983b43b596f5875a855d",
+    "url": "/a3-Experiment/static/js/main.d5de0bc4.chunk.js"
   },
   {
-    "revision": "f6ca9b3655ac1a80eda2",
-    "url": "/a3-Experiment/static/js/runtime~main.175f8d94.js"
+    "revision": "1dc9a94db031b1ad69f0",
+    "url": "/a3-Experiment/static/js/runtime~main.774e3ddf.js"
+  },
+  {
+    "revision": "cf51928799340e78b15f1bb9fbca4444",
+    "url": "/a3-Experiment/static/media/experiment2_example.cf519287.csv"
   },
   {
     "revision": "51c2d9f0468a47888afd850e52d26433",
@@ -48,6 +52,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/a3-Experiment/static/media/experiment2_random_points_second_farthest.251b7759.csv"
   },
   {
+    "revision": "74c02a372ef0220fb7ad20f19bca3915",
+    "url": "/a3-Experiment/static/media/random_points.74c02a37.csv"
+  },
+  {
     "revision": "191ed9d3d715f831cbbbb4bc97cbab18",
     "url": "/a3-Experiment/static/media/random_points_color_0.191ed9d3.csv"
   },
@@ -56,15 +64,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/a3-Experiment/static/media/random_points_color_1.f85ac575.csv"
   },
   {
-    "revision": "50bba3ce7e9f1b639ea4cf0adb4663a0",
-    "url": "/a3-Experiment/static/media/random_points_color_2.50bba3ce.csv"
+    "revision": "4e245b7d67a2a9f296fcae12fdc3d922",
+    "url": "/a3-Experiment/static/media/random_points_color_2.4e245b7d.csv"
   },
   {
-    "revision": "dece097562bb6c19251ebd9d7143b809",
-    "url": "/a3-Experiment/static/media/random_points_color_3.dece0975.csv"
+    "revision": "84f582bac91d46636bd35cd884ff31e4",
+    "url": "/a3-Experiment/static/media/random_points_color_3.84f582ba.csv"
   },
   {
-    "revision": "5300bbd23d006327734dbd70c3f45cd8",
-    "url": "/a3-Experiment/static/media/random_points_color_4.5300bbd2.csv"
+    "revision": "be19136406e2762075431bcc31137e9b",
+    "url": "/a3-Experiment/static/media/random_points_color_4.be191364.csv"
   }
 ]);
