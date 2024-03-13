@@ -42,16 +42,9 @@ function App() {
   const [csvNumber, setcsvNumber] = useState(0);
   const [canGo, setCanGo] = useState(false)
   const [data, setData] = useState([]);
-  function mouseClicked(event){
-    console.log(event.pageX, event.pageY)
-    setCanGo(false)
-    setcsvNumber(csvNumber+1)
-  }
 
   useEffect(() => {
     d3.csv(csvFiles[csvNumber]).then(function(csvData) {
-      console.log("csvData")
-      console.log(csvData)
       const formattedData = csvData.map(d => ({
         id: parseInt(d.line),
         x: parseFloat(d.x),
@@ -67,15 +60,18 @@ function App() {
     height: 500
   });
 
-  function navGraph(event){
+  function navGraph(){
     document.getElementById("graph").style.display = "block";
     document.getElementById("intro").style.display = "none";
     document.getElementById("experiment2").style.display = "none";
     document.getElementById("break").style.display = "none";
     timeStart = performance.now()
+    let timeStartTemp = timeStart
+    setTimeout(()=>{if(timeStart === timeStartTemp) navBreak()}, 30000);  // 30 secs
+
   }
 
-  function navBreak(event){
+  function navBreak(){
     timeEnd = performance.now()
     if(csvNumber === 4){
       document.getElementById("graph").style.display = "none";
@@ -108,18 +104,20 @@ function App() {
   return (
     <div className="App">
       <div id="intro" className="text-center intro">
-        <h3 className="mx-auto p-2">In this experiment, you are asked to find and click this red circle as fast as you can in a scatterplot. There will be 7 scatterplots in the experiment. We will also start with a sample scatterplot for you to practice and familiarize yourself with. We won't record any other information from you except the time it takes to find and click the red circle.</h3>
+        <h3 className="mx-auto p-2">In this experiment, you are asked to find and click this red circle as fast as you can in a scatterplot. There will be 7 scatterplots in the experiment. We will also start with a sample scatterplot for you to practice and familiarize yourself with. We won't record any other information from you except the time it takes to find and click the red circle. Your time cutoff for each trial will be 30 seconds.</h3>
         <h3 className="mx-auto p-2">Click the "agree" button to begin.</h3>
         <button className="btn btn-primary" onClick={navGraph}>Agree</button> 
       </div>
       
-      <svg id="graph" width="700" height="700" onClick={navBreak}>
+      <svg id="graph" width="700" height="700">
         <Scatterplot
           x={100}
           y={100}
           width={dimensions.width}
           height={dimensions.height}
           data={data}
+          callback={navBreak}
+          callbackColor={csvNumber < 5 ? '#ff0000' : '#080808'}
         />
       </svg>
 
@@ -130,7 +128,7 @@ function App() {
 
       <div id= "experiment2">
         <h2>Experiment 2</h2>
-        <h3 className="mx-auto p-2">In this experiment, you are asked to find and click the black circle as fast as you can in a scatterplot. There will be 5 scatterplots in the experiment. We won't record any other information from you except the time it takes to find and click the black circle.</h3>
+        <h3 className="mx-auto p-2">In this experiment, you are asked to find and click the black circle as fast as you can in a scatterplot. There will be 5 scatterplots in the experiment. We won't record any other information from you except the time it takes to find and click the black circle. Your time cutoff for each trial will be 30 seconds. </h3>
         <button className="btn btn-primary" onClick={navGraph}>Next</button> 
       </div>
 
