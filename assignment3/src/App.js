@@ -92,6 +92,7 @@ function App() {
   function navBreak(){
     console.log(csvNumber)
     timeEnd = performance.now()
+    timers.push(timeEnd-timeStart) //Prints time to click
     if(csvNumber === 0){
       document.getElementById("break").style.display = "none";
       document.getElementById("breakAfterSample").style.display = "block";
@@ -120,7 +121,6 @@ function App() {
       document.getElementById("break").style.display = "block";
       document.getElementById("experiment2").style.display = "none";
     }
-    timers.push(timeEnd-timeStart) //Prints time to click
     setcsvNumber(n => n+1)
   }
 
